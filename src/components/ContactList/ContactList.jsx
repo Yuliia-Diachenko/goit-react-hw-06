@@ -9,7 +9,7 @@ function ContactList() {
     const filters = useSelector(selectNameFilter);
     const visibleContacts = contacts.filter((contact) => {
 
-          return contact.name.toLowerCase().includes(filters);
+          return contact.name.toLowerCase().includes(filters.toLowerCase());
           
         },
     

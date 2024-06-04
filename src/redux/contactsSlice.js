@@ -20,12 +20,11 @@ export const contactsSlice = createSlice({
         addContact(state, action) {
             state.items.push(action.payload);
         },
-        prepare(name, number) {
+        prepare(newContact) {
             return {
                 payload: {
                   id: nanoid(),
-                  name,
-                  number
+                ...newContact,
                 },
             };
         },

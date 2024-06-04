@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { addContact } from "../../redux/contactsSlice";
 import { useDispatch } from "react-redux";
 
@@ -16,10 +16,10 @@ function ContactForm() {
   const dispatch = useDispatch();
     const fieldId = useId();
     const handleSubmit = (values, actions) => {
-      values.id = nanoid(); 
+      // values.id = nanoid(); 
         actions.resetForm();
-        const { name, number } = values;
-        dispatch(addContact(name, number));
+      //   const { name, number } = values;
+        dispatch(addContact(values));
     
         actions.resetForm();
       };
@@ -30,14 +30,14 @@ function ContactForm() {
       <Form className={css.container}>
 
         <div className={css.group}>
-            <label  htmlFor={`${fieldId}-username`}>Name</label>
-            <Field type="text" name="username" id={`${fieldId}-username`}/>
-            <ErrorMessage name="username" component="span" className={css.error}/>
+            <label  htmlFor={`${fieldId}-name`}>Name</label>
+            <Field type="text" name="name" id={`${fieldId}-name`}/>
+            <ErrorMessage name="name" component="span" className={css.error}/>
         </div>
         <div className={css.group}>
-            <label  htmlFor={`${fieldId}-usernumber`}>Number</label>
-            <Field type="text" name="usernumber" id={`${fieldId}-usernumber`}/>
-            <ErrorMessage name="usernumber" component="span" className={css.error}/>
+            <label  htmlFor={`${fieldId}-number`}>Number</label>
+            <Field type="text" name="number" id={`${fieldId}-number`}/>
+            <ErrorMessage name="number" component="span" className={css.error}/>
         </div>
         <button type="submit">Add contact</button>
         
