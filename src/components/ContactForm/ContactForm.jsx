@@ -15,13 +15,10 @@ const FeedbackSchema = Yup.object().shape({
 function ContactForm() {
   const dispatch = useDispatch();
     const fieldId = useId();
-    const handleSubmit = (values, actions) => {
-      values.key=values.id;
-      values.id = nanoid(); 
-        actions.resetForm();
-      //   const { name, number } = values;
-        dispatch(addContact(values));
-    
+    const handleSubmit = (values, actions) => {     
+        values.id = nanoid(); 
+        actions.resetForm();      
+        dispatch(addContact(values));    
         actions.resetForm();
       };
   
